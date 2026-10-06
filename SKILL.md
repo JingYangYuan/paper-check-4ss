@@ -1,17 +1,14 @@
 ---
 name: paper-check-4ss
 description: 中文社会科学论文全流程审稿检查模块。用于全文审稿、投稿前自检、编辑视角评审、拒稿风险诊断和投稿命中率改进；诊断题目、摘要、结构、论证、诚信、技术规范与期刊适配，并将问题精确回流。
-user-invocable: true
-argument-hint: "[稿件路径] [可选: 目标期刊/投稿须知]"
-allowed-tools:
-  - Read
-  - Grep
-  - Write
-  - Edit
-  - Agent
+invocable: true
+args_hint: "[稿件路径] [可选: 目标期刊/投稿须知]"
+capabilities: read_file, search_text, write_file, spawn_agent
 ---
 
 > **拆分版路径约定**：本包由 `paper-master-4ss/scripts/export_standalone.py` 从 `paper-master-4ss/modules/check/` 自动导出，是可独立安装的运行版。包内相对路径（`agents/`、`phases/`、`references/`、`master/` 等）相对本包根目录解析；跨模块路径 `paper-master-4ss/modules/<x>/...` 相对同级安装的 `paper-master-4ss/` 总控包解析。请勿直接编辑本包：修改总控模块后重新导出。
+>
+> **宿主无关约定**：本包不预设宿主，也不在 frontmatter 声明 `tools`/`hooks`/`model` 等宿主专属键。启动时按 `references/runtime-adapter.md` §5 探测当前环境可用能力，再按通用能力名（`read_file`、`search_text`、`web_search`、`run_shell`、`spawn_agent` 等）执行；宿主样例见 `references/agent-software-adapters.md`（样例，非名单）。
 
 # Paper Check 4SS
 
